@@ -1,0 +1,26 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Formalization of the "Wisdom of the Crowd" effect
+message: First version - not production ready yet
+type: software
+authors:
+  - given-names: Benedikt
+    family-names: Ehrenwirth
+    email: b.ehrenwirth@campus.lmu.de
+    affiliation: Ludwig-Maximilians-Universität München
+  - given-names: Simeon
+    family-names: Kovac
+    email: simeon.kovac@campus.lmu.de
+    affiliation: Ludwig-Maximilians-Universität München
+  - given-names: Thomas
+    family-names: Menzel
+    email: thomas.menzel@campus.lmu.de
+    affiliation: Ludwig-Maximilians-Universität München
+    orcid: 'https://orcid.org/0009-0005-0460-2249'
+repository-code: 'https://github.com/SimKovac/Wisdom-of-Crowd'
+license: CC-BY-4.0
+commit: 99b6d28d8593ee3b56dd89f9f0189fb8dca5920f
+version: 0.1.0
+date-released: '2025-01-17'
