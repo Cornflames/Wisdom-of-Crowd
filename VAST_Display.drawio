@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="Seite-1" id="RQTe5mgzZmNywEFpRnqD">
-    <mxGraphModel dx="2099" dy="2045" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2562" dy="2364" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,7 +16,7 @@
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-59" value="JAS-Estimation (i)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" parent="HI9Pbx4m3uAijnWi6vWS-57" vertex="1">
           <mxGeometry x="1080" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="HI9Pbx4m3uAijnWi6vWS-60" value="&lt;font style=&quot;font-size: 14px; background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;&lt;i&gt;Each single estimate goes directly into the formula&lt;/i&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="HI9Pbx4m3uAijnWi6vWS-57" vertex="1">
+        <mxCell id="HI9Pbx4m3uAijnWi6vWS-60" value="&lt;font style=&quot;font-size: 14px; background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;&lt;i&gt;Each single estimate goes directly into the formula.&lt;/i&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="HI9Pbx4m3uAijnWi6vWS-57" vertex="1">
           <mxGeometry x="1230" y="201" width="135" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-34" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;p&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="HI9Pbx4m3uAijnWi6vWS-57" vertex="1">
@@ -148,10 +148,10 @@
             <mxPoint x="380" y="70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PKGyjkcOjaS4IfkWWpPk-57" value="&quot;The social weight judge i puts on the received social information&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="PKGyjkcOjaS4IfkWWpPk-57" value="&quot;The social weight judge i puts on the received social information.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="469.25" y="790.75" width="189.5" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="PKGyjkcOjaS4IfkWWpPk-68" value="&quot;The confidence judge i has in his/her estimation accuracy.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="PKGyjkcOjaS4IfkWWpPk-68" value="&quot;The confidence judge i has in his/her first estimate.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="223.75" y="1445.5" width="180" height="67.5" as="geometry" />
         </mxCell>
         <mxCell id="PKGyjkcOjaS4IfkWWpPk-79" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;F4: Second estimate as the weighted mean of the first estimate and social information with social weight&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;SE = (1 − SW)*FE + SW * SI&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;" parent="1" vertex="1">
@@ -226,7 +226,7 @@
             <mxPoint x="1299" y="1214" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PKGyjkcOjaS4IfkWWpPk-111" value="&quot;The aggregated group estimate.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;" parent="1" vertex="1">
+        <mxCell id="PKGyjkcOjaS4IfkWWpPk-111" value="&quot;The aggregated group estimate&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;" parent="1" vertex="1">
           <mxGeometry x="1027.75" y="1443" width="182.5" height="47" as="geometry" />
         </mxCell>
         <mxCell id="PKGyjkcOjaS4IfkWWpPk-112" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;n&lt;/font&gt;" style="endArrow=blockThin;html=1;rounded=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeWidth=1;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;spacingLeft=5;" parent="1" source="PKGyjkcOjaS4IfkWWpPk-108" target="PKGyjkcOjaS4IfkWWpPk-111" edge="1">
@@ -307,7 +307,7 @@
             <mxPoint x="900" y="1077" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HI9Pbx4m3uAijnWi6vWS-37" value="&quot;Prior knowledge of judge i on the estimation task. &quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="HI9Pbx4m3uAijnWi6vWS-37" value="&quot;Prior knowledge of judge i on the estimation task&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="-45" y="790.75" width="180" height="67.5" as="geometry" />
         </mxCell>
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-38" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;n&lt;/font&gt;" style="endArrow=blockThin;html=1;rounded=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeWidth=1;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;spacingLeft=5;" parent="1" source="HI9Pbx4m3uAijnWi6vWS-1" target="HI9Pbx4m3uAijnWi6vWS-37" edge="1">
@@ -316,7 +316,7 @@
             <mxPoint x="500" y="927" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HI9Pbx4m3uAijnWi6vWS-42" value="&quot;The deviation of the first estimate from the social information.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
+        <mxCell id="HI9Pbx4m3uAijnWi6vWS-42" value="&quot;The deviation of the first estimate from the social information&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;spacingLeft=3;spacingRight=3;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="-45" y="1447" width="180" height="67.5" as="geometry" />
         </mxCell>
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-47" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;n&lt;/font&gt;" style="endArrow=blockThin;html=1;rounded=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;strokeWidth=1;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;spacingLeft=5;" parent="1" source="HI9Pbx4m3uAijnWi6vWS-4" target="HI9Pbx4m3uAijnWi6vWS-42" edge="1">
@@ -325,7 +325,7 @@
             <mxPoint x="230" y="1377" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HI9Pbx4m3uAijnWi6vWS-61" value="&lt;font style=&quot;font-size: 14px; background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;&lt;i&gt;*The resulting array of single estimates is collected and aggregated before going into the formula&lt;/i&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="HI9Pbx4m3uAijnWi6vWS-61" value="&lt;font style=&quot;font-size: 14px; background-color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;&lt;i&gt;*The resulting array of single estimates is collected and aggregated before going into the formula.&lt;/i&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1190" y="1296" width="185" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-62" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Analysts: Simeon, Thomas, Benedikt&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
@@ -364,7 +364,7 @@
         <mxCell id="3c774us1H-8BARN5G9tz-6" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;0.25 * cos(6.3 * D) + 0.75&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; D&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;∈ [0; 1]&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
           <mxGeometry x="184" width="476" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3c774us1H-8BARN5G9tz-7" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;-0.5&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;D&lt;/span&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;∈ ]2.57; +&lt;/span&gt;&lt;span style=&quot;vertical-align: -5%;&quot;&gt;&lt;span style=&quot;&quot; class=&quot;texhtml&quot;&gt;&lt;font style=&quot;font-size: 25px;&quot;&gt;∞&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;[&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
+        <mxCell id="3c774us1H-8BARN5G9tz-7" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;-0.5&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;D&lt;font style=&quot;&quot;&gt;&amp;nbsp;&amp;gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;2.57&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
           <mxGeometry x="184" y="87" width="306" height="30" as="geometry" />
         </mxCell>
         <mxCell id="3c774us1H-8BARN5G9tz-8" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;0.75 * cos(2 * D - 2) + 0.25&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; D&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;∈ ]0; 2.57]&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
@@ -382,35 +382,20 @@
         <mxCell id="E7jn8x-j8wrXgCCPajOB-5" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
           <mxGeometry x="1070" y="1666" width="20" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-6" value="1&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;f(&lt;/b&gt; AggGE &lt;b&gt;)&lt;/b&gt;&amp;nbsp;&amp;lt;=&amp;nbsp;∑(1/n)*&lt;b&gt;f(&amp;nbsp;&lt;/b&gt;SE&lt;sub&gt;i&amp;nbsp;&lt;/sub&gt;&lt;b&gt;)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-6" value="1&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;f(&lt;/b&gt; AggGE &lt;b&gt;)&lt;/b&gt;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;≤&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;∑(1/n)*&lt;/span&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;f(&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SE&lt;/span&gt;&lt;sub style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;i&amp;nbsp;&lt;/sub&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="1099" y="1656" width="361" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-7" value="&lt;i&gt;else &lt;/i&gt;0" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="1099" y="1694" width="361" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-8" value="&lt;i&gt;where&amp;nbsp; &amp;nbsp;&lt;/i&gt;the &lt;b&gt;accuracy&lt;/b&gt; function f(x) = x&lt;sup&gt;2&lt;/sup&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="956" y="1739" width="460" height="30" as="geometry" />
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-8" value="&lt;i&gt;where&amp;nbsp; &amp;nbsp;&lt;/i&gt;the &lt;b&gt;accuracy&lt;/b&gt; function f(x) = x&lt;sup&gt;2&lt;/sup&gt;&amp;nbsp;and&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;higher values represent lower accuracy&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="946" y="1739" width="524" height="51" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-9" value="&lt;i&gt;where&amp;nbsp; &amp;nbsp;&lt;/i&gt;SE represent the deviation&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;from the true value" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="622" y="1746.5" width="320" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-10" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;AggGE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="1025" y="1822" width="135" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-11" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="1160" y="1798" width="20" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-12" value="the &lt;b&gt;average&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="1190" y="1783" width="114" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-15" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;median&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="1183" y="1821" width="145" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-17" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt; of all estimations SE&lt;sub&gt;i&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="1179" y="1861" width="426" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-23" value="" style="group;align=left;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-588" y="1746" width="403" height="119" as="geometry" />
+          <mxGeometry x="-588" y="1746" width="460" height="119" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-18" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
           <mxGeometry x="20" y="39" width="135" height="30" as="geometry" />
@@ -424,11 +409,29 @@
         <mxCell id="E7jn8x-j8wrXgCCPajOB-21" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;median&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
           <mxGeometry x="158" y="38" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-22" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt;&amp;nbsp;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;of the n - 1 other estimates&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
-          <mxGeometry x="163" y="89" width="249" height="30" as="geometry" />
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-22" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt;&amp;nbsp;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;of the n - 1 other first estimates&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
+          <mxGeometry x="163" y="89" width="297" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-24" value="&lt;i style=&quot;&quot;&gt;where&lt;/i&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; FE ~ Cauchy(-0.2, -5*PK + 5.5)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and FE represents the deviation&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; from the true value&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="-552" y="1681" width="463" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8GmgWcnd5Tuu2EOM0dAA-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1025" y="1809" width="580" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-10" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;AggGE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
+          <mxGeometry y="39" width="135" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-11" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
+          <mxGeometry x="135" y="15" width="20" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-12" value="the &lt;b&gt;average&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
+          <mxGeometry x="165" width="114" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-15" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;median&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
+          <mxGeometry x="158" y="38" width="145" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-17" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt; of all n second estimates SE&lt;sub&gt;i&lt;/sub&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
+          <mxGeometry x="163" y="93" width="426" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
