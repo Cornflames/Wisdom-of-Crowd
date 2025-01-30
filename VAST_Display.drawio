@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="Seite-1" id="RQTe5mgzZmNywEFpRnqD">
-    <mxGraphModel dx="2562" dy="2364" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1781" dy="1826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -367,7 +367,7 @@
         <mxCell id="3c774us1H-8BARN5G9tz-7" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;-0.5&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;D&lt;font style=&quot;&quot;&gt;&amp;nbsp;&amp;gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;2.57&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
           <mxGeometry x="184" y="87" width="306" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="3c774us1H-8BARN5G9tz-8" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;0.75 * cos(2 * D - 2) + 0.25&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; D&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;∈ ]0; 2.57]&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
+        <mxCell id="3c774us1H-8BARN5G9tz-8" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;0.75 * cos(2 * D - 2) + 0.25&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; D&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;∈ ]1; 2.57]&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
           <mxGeometry x="184" y="44" width="466" height="30" as="geometry" />
         </mxCell>
         <mxCell id="3c774us1H-8BARN5G9tz-10" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;i&gt;and&lt;/i&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;α&amp;nbsp;= f(D)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
@@ -415,7 +415,7 @@
         <mxCell id="E7jn8x-j8wrXgCCPajOB-24" value="&lt;i style=&quot;&quot;&gt;where&lt;/i&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; FE ~ Cauchy(-0.2, -5*PK + 5.5)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and FE represents the deviation&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; from the true value&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="-552" y="1681" width="463" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="8GmgWcnd5Tuu2EOM0dAA-1" value="" style="group" vertex="1" connectable="0" parent="1">
+        <mxCell id="8GmgWcnd5Tuu2EOM0dAA-1" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="1025" y="1809" width="580" height="108" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-10" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;AggGE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
