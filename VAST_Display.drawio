@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="Seite-1" id="RQTe5mgzZmNywEFpRnqD">
-    <mxGraphModel dx="2020" dy="1990" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2735" dy="2483" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -331,8 +331,8 @@
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-62" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Analysts: Simeon, Thomas, Benedikt&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="989" y="-3" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HI9Pbx4m3uAijnWi6vWS-70" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;F2: The base-level confidence is predicted by prior knowledge and modified by deviation&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;line-height: 140%;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;CONF = &lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;α * CONF&lt;sub style=&quot;line-height: 140%;&quot;&gt;base&lt;/sub&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); line-height: 140%; font-size: 20px;&quot;&gt;&lt;i&gt;where&lt;/i&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;CONF&lt;/span&gt;&lt;sub style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); line-height: 140%;&quot;&gt;&lt;font style=&quot;font-size: 17px; line-height: 140%;&quot;&gt;base&lt;/font&gt;&lt;/sub&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;~ Lognormal(-1 + PK, 1)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-124" y="1597" width="405" height="150" as="geometry" />
+        <mxCell id="HI9Pbx4m3uAijnWi6vWS-70" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;F2: The base-level confidence is predicted by prior knowledge and modified by deviation&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;line-height: 140%;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;CONF = &lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;α * CONF&lt;sub style=&quot;line-height: 140%;&quot;&gt;base&lt;/sub&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); line-height: 140%; font-size: 20px;&quot;&gt;&lt;i&gt;where&lt;/i&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;CONF&lt;/span&gt;&lt;sub style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); line-height: 140%;&quot;&gt;&lt;font style=&quot;font-size: 17px; line-height: 140%;&quot;&gt;base&lt;/font&gt;&lt;/sub&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp;= PK +&lt;/span&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); line-height: 140%;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-align: center;&quot;&gt;ε&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;and&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-align: center;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;ε&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 20px;&quot;&gt;~ Normal(0.3, 0.3)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 20px; line-height: 140%;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-124" y="1597" width="405" height="173" as="geometry" />
         </mxCell>
         <mxCell id="HI9Pbx4m3uAijnWi6vWS-73" value="&lt;div&gt;&lt;span style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;F1: Deviation&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-align: left;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-align: left;&quot;&gt;D = |(SI - FE)| / FE&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="1" vertex="1">
           <mxGeometry x="-549" y="1574" width="330" height="80" as="geometry" />
@@ -356,7 +356,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-1" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-119" y="1756" width="660" height="117" as="geometry" />
+          <mxGeometry x="-119" y="1781" width="660" height="117" as="geometry" />
         </mxCell>
         <mxCell id="3c774us1H-8BARN5G9tz-5" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="E7jn8x-j8wrXgCCPajOB-1" vertex="1">
           <mxGeometry x="154" y="15" width="20" height="90" as="geometry" />
@@ -382,7 +382,7 @@
         <mxCell id="E7jn8x-j8wrXgCCPajOB-5" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
           <mxGeometry x="1070" y="1666" width="20" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-6" value="1&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;f(&lt;/b&gt; AggGE &lt;b&gt;)&lt;/b&gt;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;≤&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;∑(1/n)*&lt;/span&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;f(&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SE&lt;/span&gt;&lt;sub style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;i&amp;nbsp;&lt;/sub&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;)&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-6" value="1&amp;nbsp; &amp;nbsp;&lt;i&gt;if&lt;/i&gt;&amp;nbsp; &amp;nbsp;&lt;b&gt;f(&lt;/b&gt; AggGE &lt;b&gt;)&lt;/b&gt;&amp;nbsp;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;≤&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;avg_indiv(&lt;/span&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;f(&amp;nbsp;&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;SE&lt;/span&gt;&lt;sub style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;i&amp;nbsp;&lt;/sub&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;))&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="1099" y="1656" width="361" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-7" value="&lt;i&gt;else &lt;/i&gt;0" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
@@ -395,7 +395,7 @@
           <mxGeometry x="622" y="1746.5" width="320" height="30" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-23" value="" style="group;align=left;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="-588" y="1746" width="460" height="119" as="geometry" />
+          <mxGeometry x="-588" y="1772" width="460" height="119" as="geometry" />
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-18" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;SI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
           <mxGeometry x="20" y="39" width="135" height="30" as="geometry" />
@@ -412,8 +412,8 @@
         <mxCell id="E7jn8x-j8wrXgCCPajOB-22" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt;&amp;nbsp;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;of the n - 1 other first estimates&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="E7jn8x-j8wrXgCCPajOB-23" vertex="1">
           <mxGeometry x="163" y="89" width="297" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="E7jn8x-j8wrXgCCPajOB-24" value="&lt;i style=&quot;&quot;&gt;where&lt;/i&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; FE ~ Cauchy(-0.2, -5*PK + 5.5)&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and FE represents the deviation&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; from the true value&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="-552" y="1681" width="463" height="30" as="geometry" />
+        <mxCell id="E7jn8x-j8wrXgCCPajOB-24" value="&lt;i style=&quot;&quot;&gt;where&lt;/i&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; FE ~ Cauchy(-0.2, -5*PK + 5.5)&lt;/span&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and PK ~ Truncnorm(0.3, 0.3)&lt;br&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; and FE represents the deviation&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; from the true value&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="-552" y="1693" width="463" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8GmgWcnd5Tuu2EOM0dAA-1" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="1025" y="1809" width="580" height="108" as="geometry" />
@@ -432,6 +432,33 @@
         </mxCell>
         <mxCell id="E7jn8x-j8wrXgCCPajOB-17" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt; of all n second estimates SE&lt;sub&gt;i&lt;/sub&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="8GmgWcnd5Tuu2EOM0dAA-1" vertex="1">
           <mxGeometry x="163" y="93" width="426" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-1" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="1025" y="1967" width="580" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-2" value="&lt;i&gt;and&amp;nbsp; &amp;nbsp;&lt;/i&gt;avg_indiv(x)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="xGMO5xAtStzFDhDZ7F_N-1" vertex="1">
+          <mxGeometry x="-40" y="39" width="175" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-3" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="xGMO5xAtStzFDhDZ7F_N-1" vertex="1">
+          <mxGeometry x="135" y="15" width="20" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-4" value="the &lt;b&gt;average&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="xGMO5xAtStzFDhDZ7F_N-1" vertex="1">
+          <mxGeometry x="165" width="114" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-5" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;median&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="xGMO5xAtStzFDhDZ7F_N-1" vertex="1">
+          <mxGeometry x="158" y="38" width="145" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-6" value="&lt;i&gt;or&lt;/i&gt; the &lt;b&gt;geometric mean&lt;/b&gt; of the accuracies of all n estimates SE&lt;sub&gt;i&lt;/sub&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="xGMO5xAtStzFDhDZ7F_N-1" vertex="1">
+          <mxGeometry x="163" y="93" width="426" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="xGMO5xAtStzFDhDZ7F_N-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="95" y="33" as="sourcePoint" />
+            <mxPoint x="95" y="-77" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xGMO5xAtStzFDhDZ7F_N-8" value="&lt;i&gt;respectively&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" parent="1" vertex="1">
+          <mxGeometry x="1033" y="1929" width="73" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
