@@ -1,244 +1,270 @@
-#' Calculate First Estimate
-#' 
-#' @description Calculates the first estimate as deviation from true value using a Cauchy distribution
-#' @param pk Numeric vector. Prior knowledge values between 0 and 1
-#' @return Numeric vector. First estimates as deviation from true value
-calculate_first_estimate <- function(pk) {
-  if (any(pk < 0) || any(pk > 1)) stop("Prior knowledge must be between 0 and 1")
-  # Higher prior knowledge leads to smaller sigma (less spread)
-  sigma <- 5.5 - 5 * pk  # sigma ranges from 0.5 (pk=1) to 5.5 (pk=0)
-  rcauchy(length(pk), location = 0, scale = sigma)
+# Distribution of Prior Knowledge
+dPriorKnowledge <- function(n_individuals, distribution_type = "uniform", params = list()) {
+  switch(distribution_type,
+         "uniform" = {
+           # Default uniform distribution between 0 and 1
+           min_val <- if(is.null(params$min)) 0 else params$min
+           max_val <- if(is.null(params$max)) 1 else params$max
+           return(runif(n_individuals, min = min_val, max = max_val))
+         },
+         "normal" = {
+           # Normal distribution with specified mean and sd
+           mean_val <- if(is.null(params$mean)) 0.5 else params$mean
+           sd_val <- if(is.null(params$sd)) 0.15 else params$sd
+           # Clip values to be between 0 and 1
+           knowledge <- pmin(pmax(rnorm(n_individuals, mean = mean_val, sd = sd_val), 0), 1)
+           return(knowledge)
+         },
+         "beta" = {
+           # Beta distribution for more flexible shapes
+           alpha <- if(is.null(params$alpha)) 2 else params$alpha
+           beta <- if(is.null(params$beta)) 2 else params$beta
+           return(rbeta(n_individuals, shape1 = alpha, shape2 = beta))
+         },
+         "bimodal" = {
+           # Simple bimodal distribution (mix of two normals)
+           prop1 <- if(is.null(params$prop1)) 0.5 else params$prop1
+           mean1 <- if(is.null(params$mean1)) 0.25 else params$mean1
+           mean2 <- if(is.null(params$mean2)) 0.75 else params$mean2
+           sd1 <- if(is.null(params$sd1)) 0.1 else params$sd1
+           sd2 <- if(is.null(params$sd2)) 0.1 else params$sd2
+           
+           n1 <- round(n_individuals * prop1)
+           n2 <- n_individuals - n1
+           
+           group1 <- rnorm(n1, mean = mean1, sd = sd1)
+           group2 <- rnorm(n2, mean = mean2, sd = sd2)
+           
+           # Clip values to be between 0 and 1
+           knowledge <- pmin(pmax(c(group1, group2), 0), 1)
+           return(knowledge)
+         },
+         # Default to uniform if distribution type not recognized
+         runif(n_individuals, min = 0, max = 1)
+  )
 }
 
-#' Calculate Base Confidence
-#' 
-#' @description Calculates base confidence using a log-normal distribution
-#' @param pk Numeric vector. Prior knowledge values between 0 and 1
-#' @return Numeric vector. Base confidence values
-calculate_base_confidence <- function(pk) {
-  if (any(pk < 0) || any(pk > 1)) stop("Prior knowledge must be between 0 and 1")
-  rlnorm(length(pk), meanlog = -1 + 2*pk, sdlog = 0.5)
+# Function to calculate confidence based on prior knowledge
+calculateConfidence <- function(prior_knowledge) {
+  # Simple linear relationship between knowledge and confidence
+  return(prior_knowledge)
 }
 
-#' Calculate Alpha Modification
-#' 
-#' @description Calculates alpha modification based on deviation from group estimate
-#'              following specific anchor points for different deviation levels
-#' @param D Numeric vector. Deviation values
-#' @return Numeric vector. Alpha modification values between -0.5 and 1
-calculate_alpha <- function(D) {
-  D <- abs(D)
-  # anchor points:
-  # D = 0   -> alpha = 1    (no change to base confidence)
-  # D = 0.5 -> alpha = 0.5  (moderate reduction)
-  # D = 1   -> alpha = 1    (reaffirmation)
-  # D = 1.5 -> alpha = 0    (complete uncertainty)
-  # D = 2   -> alpha = -0.5 (overreacting)
+# Distribution of Individual First Estimates
+dIndividualFirstEstimate <- function(prior_knowledge, true_value) {
+  # Returns parameters of the distribution, not samples
+  mean_guess <- true_value * (0.5 + 0.3 * prior_knowledge)
+  sd_guess <- 30 * (1 - prior_knowledge)
   
-  ifelse(D < 0.5, 
-         1 - D,  # Linear decrease from 1 to 0.5
-         ifelse(D < 1, 
-                0.5 + (D - 0.5) * 1,  # Linear increase from 0.5 to 1
-                ifelse(D < 1.5,
-                       1 - 2 * (D - 1),  # Linear decrease from 1 to 0
-                       ifelse(D < 2,
-                              -2 * (D - 1.5),  # Linear decrease from 0 to -0.5
-                              -0.5))))  # Constant -0.5 for D >= 2
+  # Generate a sample from this distribution
+  estimate <- rnorm(1, mean = mean_guess, sd = sd_guess)
+  
+  return(estimate)
 }
 
-
-#' Calculate Confidence
-#' 
-#' @description Calculates final confidence based on base confidence and alpha modification
-#' @param alpha Numeric vector. Alpha modification values
-#' @param conf_base Numeric vector. Base confidence values
-#' @return Numeric vector. Final confidence values
-calculate_confidence <- function(alpha, conf_base) {
-  alpha * conf_base
+# Distribution of Group First Estimates
+dGroupFirstEstimate <- function(prior_knowledge_vector, true_value) {
+  # Generate first estimates for all individuals
+  first_estimates <- sapply(prior_knowledge_vector, dIndividualFirstEstimate, true_value = true_value)
+  return(first_estimates)
 }
 
-#' Calculate Deviation
-#' 
-#' @description Calculates deviation between first estimate and social information
-#' @param fe Numeric vector. First estimates
-#' @param si Numeric vector. Social information
-#' @return Numeric vector. Deviation values
-calculate_deviation <- function(fe, si) {
-  abs(si - fe) / fe
+# Psi function for integrating social information
+psi <- function(first_estimate, social_info, confidence) {
+  # Weight between first estimate and social information based on confidence
+  weight_own <- confidence
+  weight_social <- 1 - confidence
+  
+  second_estimate <- weight_own * first_estimate + weight_social * social_info
+  return(second_estimate)
 }
 
-#' Calculate Social Weight
-#' 
-#' @description Calculates social weight based on confidence
-#' @param conf Numeric vector. Confidence values
-#' @return Numeric vector. Social weight values
-calculate_social_weight <- function(conf) {
-  1 - conf
+# Distribution of Individual Second Estimates
+dIndividualSecondEstimate <- function(first_estimate, social_info, confidence) {
+  # Returns the second estimate after applying the Psi function
+  second_estimate <- psi(first_estimate, social_info, confidence)
+  return(second_estimate)
 }
 
-#' Calculate Second Estimate
-#' 
-#' @description Calculates second estimate based on first estimate, social information, and social weight
-#' @param fe Numeric vector. First estimates
-#' @param si Numeric vector. Social information
-#' @param sw Numeric vector. Social weights
-#' @return Numeric vector. Second estimate values
-calculate_second_estimate <- function(fe, si, sw) {
-  (1 - sw) * fe + sw * si
+# Distribution of Group Second Estimates
+dGroupSecondEstimates <- function(first_estimate_vector, social_info, confidence_vector) {
+  # Generate second estimates for all individuals
+  second_estimates <- mapply(dIndividualSecondEstimate,
+                             first_estimate = first_estimate_vector,
+                             confidence = confidence_vector,
+                             MoreArgs = list(social_info = social_info))
+  return(second_estimates)
 }
 
-#' Aggregate Estimates
-#' 
-#' @description Aggregates multiple estimates using specified method
-#' @param estimates Numeric vector. Individual estimates to aggregate
-#' @param method Character. "mean", "median", or "geometric"
-#' @return Numeric. Single aggregated estimate
-aggregate_estimates <- function(estimates, method = c("mean", "median", "geometric")) {
-  method <- match.arg(method)
+# Function to determine WOC with social influence
+determineWOCSocialInfluence <- function(first_estimate_vector, second_estimate_vector, true_value) {
+  # Calculate mean estimates
+  mean_first <- mean(first_estimate_vector)
+  mean_second <- mean(second_estimate_vector)
   
-  switch(method,
-         "mean" = mean(estimates),
-         "median" = median(estimates),
-         "geometric" = sign(prod(estimates)) * exp(mean(log(abs(estimates)))))
-}
-
-#' Simulate Complete Estimation Process
-#' 
-#' @description Simulates a complete estimation process for one subject, including
-#'              first estimate, confidence calculations, and second estimate
-#' @param pk Numeric. Prior knowledge value between 0 1
-#' @param si Numeric. Social information
-#' @return Named numeric vector containing:
-#'         - fe: First estimate
-#'         - conf_base: Base confidence
-#'         - conf: Final confidence (after alpha modification)
-#'         - se: Second estimate
-simulate_estimation_process <- function(pk, si) {
-  # Generate first estimate
-  fe <- calculate_first_estimate(pk)
+  # Calculate individual means (average of individual estimates)
+  mean_individual_first <- mean(first_estimate_vector)
+  mean_individual_second <- mean(second_estimate_vector)
   
-  # Calculate base confidence
-  conf_base <- calculate_base_confidence(pk)
+  # Calculate individual average distances (average error of individuals)
+  mean_individual_distance_first <- mean(abs(first_estimate_vector - true_value))
+  mean_individual_distance_second <- mean(abs(second_estimate_vector - true_value))
   
-  # Calculate deviation and alpha
-  dev <- calculate_deviation(fe, si)
-  alpha <- calculate_alpha(dev)
+  # Calculate group distances (error of the aggregated estimate)
+  group_distance_first <- abs(mean_first - true_value)
+  group_distance_second <- abs(mean_second - true_value)
   
-  # Calculate final confidence
-  conf <- calculate_confidence(alpha, conf_base)
+  # Calculate WOC benefit in absolute units (how many units closer the group is vs avg individual)
+  woc_benefit_first <- mean_individual_distance_first - group_distance_first
+  woc_benefit_second <- mean_individual_distance_second - group_distance_second
   
-  # Calculate social weight and second estimate
-  sw <- calculate_social_weight(conf)
-  se <- calculate_second_estimate(fe, si, sw)
+  # Change in WOC benefit
+  woc_benefit_change <- woc_benefit_second - woc_benefit_first
   
-  # Return results as named vector
-  return(c(
-    fe = fe,
-    conf_base = conf_base,
-    conf = conf,
-    se = se
+  # Percentage WOC benefit (what % of individual error is eliminated by aggregation)
+  woc_percent_benefit_first <- (woc_benefit_first / mean_individual_distance_first) * 100
+  woc_percent_benefit_second <- (woc_benefit_second / mean_individual_distance_second) * 100
+  woc_percent_benefit_change <- woc_percent_benefit_second - woc_percent_benefit_first
+  
+  # Also calculate the squared error metrics for completeness
+  error_first <- (mean_first - true_value)^2
+  error_second <- (mean_second - true_value)^2
+  individual_error_first <- mean((first_estimate_vector - true_value)^2)
+  individual_error_second <- mean((second_estimate_vector - true_value)^2)
+  
+  return(list(
+    # Group estimates
+    group_mean_first = mean_first,
+    group_mean_second = mean_second,
+    group_distance_first = group_distance_first,
+    group_distance_second = group_distance_second,
+    
+    # Individual averages
+    individual_mean_distance_first = mean_individual_distance_first,
+    individual_mean_distance_second = mean_individual_distance_second,
+    
+    # WOC benefits in original units
+    woc_benefit_first = woc_benefit_first,
+    woc_benefit_second = woc_benefit_second,
+    woc_benefit_change = woc_benefit_change,
+    
+    # WOC benefits as percentages
+    woc_percent_benefit_first = woc_percent_benefit_first,
+    woc_percent_benefit_second = woc_percent_benefit_second,
+    woc_percent_benefit_change = woc_percent_benefit_change,
+    
+    # Original squared error metrics
+    error_first = error_first,
+    error_second = error_second,
+    individual_error_first = individual_error_first,
+    individual_error_second = individual_error_second,
+    improvement = error_first - error_second,
+    individual_improvement = individual_error_first - individual_error_second
   ))
 }
 
-
-############# WORKING IN PROGRESS ####################
-
-#' Simulate Group Estimation Process
-#' 
-#' @description Simulates estimation process for group of individuals
-#' @param n_subjects Integer. Number of subjects in group (default 10)
-#' @param pk_range Numeric vector of length 2. Range for prior knowledge sampling (default c(0.2, 0.8))
-#' @param seed Integer. Random seed for reproducibility
-#' @return df containing:
-#'         - subject_id: Subject identifier
-#'         - prior_knowledge: Individual prior knowledge values
-#'         - fe: First estimates
-#'         - conf_base: Base confidence
-#'         - conf: Final confidence after alpha modification
-#'         - se: Second estimates
-simulate_group <- function(n_subjects = 10, 
-                           pk_range = c(0.2, 0.8), 
-                           seed = NULL) {
-  if (!is.null(seed)) set.seed(seed)
+# Function to run a simulation
+runSimulation <- function(n_individuals, true_value, knowledge_distribution = "uniform", 
+                          knowledge_params = list(), social_info_type = "mean", 
+                          manipulated_social_info = NULL, n_trials = 1) {
   
-  # Create base data frame for all subjects
-  df <- data.frame(
-    subject_id = 1:n_subjects,
-    prior_knowledge = runif(n_subjects, min = pk_range[1], max = pk_range[2])
-  )
+  results <- list()
   
-  # Simulate first estimates
-  df$fe <- sapply(df$prior_knowledge, calculate_first_estimate)
-  
-  # Calculate base confidence
-  df$conf_base <- sapply(df$prior_knowledge, calculate_base_confidence)
-  
-  # Simulate estimation process sequentially
-  for(i in 1:n_subjects) {
-    if(i == 1) {
-      si <- 0  # First VP gets true value as social information
+  for(i in 1:n_trials) {
+    # Generate prior knowledge
+    prior_knowledge <- dPriorKnowledge(n_individuals, knowledge_distribution, knowledge_params)
+    
+    # Calculate confidence
+    confidence <- sapply(prior_knowledge, calculateConfidence)
+    
+    # Generate first estimates
+    first_estimates <- dGroupFirstEstimate(prior_knowledge, true_value)
+    
+    # Calculate social information
+    if(!is.null(manipulated_social_info)) {
+      social_info <- manipulated_social_info
     } else {
-      # Use first estimates for social information
-      si <- aggregate_estimates(df$fe[1:(i-1)], method = "mean")
+      switch(social_info_type,
+             "mean" = {
+               social_info <- mean(first_estimates)
+             },
+             "median" = {
+               social_info <- median(first_estimates)
+             },
+             "trimmed_mean" = {
+               # Remove the top and bottom 10%
+               social_info <- mean(first_estimates, trim = 0.1)
+             },
+             # Default to mean
+             social_info <- mean(first_estimates)
+      )
     }
     
-    # Calculate deviation
-    dev <- calculate_deviation(df$fe[i], si)
+    # Generate second estimates
+    second_estimates <- dGroupSecondEstimates(first_estimates, social_info, confidence)
     
-    # Calculate alpha and confidence
-    alpha <- calculate_alpha(dev)
-    df$conf[i] <- calculate_confidence(alpha, df$conf_base[i])
+    # Determine WOC effects
+    woc_effects <- determineWOCSocialInfluence(first_estimates, second_estimates, true_value)
     
-    # Calculate social weight and second estimate
-    sw <- calculate_social_weight(df$conf[i])
-    df$se[i] <- calculate_second_estimate(df$fe[i], si, sw)
+    # Store results for this trial
+    results[[i]] <- list(
+      prior_knowledge = prior_knowledge,
+      confidence = confidence,
+      first_estimates = first_estimates,
+      social_info = social_info,
+      second_estimates = second_estimates,
+      woc_effects = woc_effects
+    )
   }
   
-  # Aggregate
-  group_se <- aggregate_estimates(df$se, method = "mean")
-  df$group_se <- group_se  # Add group estimate to dataframe
-  
-  return(df)
-}
-
-simulate_woc_experiment <- function(
-    n_sims = 10,        
-    n_subjects = 10,
-    pk_range = c(0.0001, 0.001)
-) {
-  crowd_sq_errors <- numeric(n_sims)
-  individual_sq_errors <- numeric(n_sims)
-  
-  for (i in seq_len(n_sims)) {
-
-    sim_data <- simulate_group(n_subjects, pk_range = pk_range, )
+  if(n_trials == 1) {
+    return(results[[1]])
+  } else {
+    aggregate_results <- list(
+      # Group estimates
+      mean_group_first = mean(sapply(results, function(x) x$woc_effects$group_mean_first)),
+      mean_group_second = mean(sapply(results, function(x) x$woc_effects$group_mean_second)),
+      mean_group_distance_first = mean(sapply(results, function(x) x$woc_effects$group_distance_first)),
+      mean_group_distance_second = mean(sapply(results, function(x) x$woc_effects$group_distance_second)),
+      
+      # Individual averages
+      mean_individual_distance_first = mean(sapply(results, function(x) x$woc_effects$individual_mean_distance_first)),
+      mean_individual_distance_second = mean(sapply(results, function(x) x$woc_effects$individual_mean_distance_second)),
+      
+      # WOC benefits in original units
+      mean_woc_benefit_first = mean(sapply(results, function(x) x$woc_effects$woc_benefit_first)),
+      mean_woc_benefit_second = mean(sapply(results, function(x) x$woc_effects$woc_benefit_second)),
+      mean_woc_benefit_change = mean(sapply(results, function(x) x$woc_effects$woc_benefit_change)),
+      
+      # WOC benefits as percentages
+      mean_woc_percent_benefit_first = mean(sapply(results, function(x) x$woc_effects$woc_percent_benefit_first)),
+      mean_woc_percent_benefit_second = mean(sapply(results, function(x) x$woc_effects$woc_percent_benefit_second)),
+      mean_woc_percent_benefit_change = mean(sapply(results, function(x) x$woc_effects$woc_percent_benefit_change)),
+      
+      # Proportion of trials showing improvement
+      proportion_group_improved = mean(sapply(results, function(x) x$woc_effects$group_distance_first > x$woc_effects$group_distance_second)),
+      proportion_individual_improved = mean(sapply(results, function(x) x$woc_effects$individual_mean_distance_first > x$woc_effects$individual_mean_distance_second)),
+      proportion_woc_strengthened = mean(sapply(results, function(x) x$woc_effects$woc_benefit_change > 0))
+    )
     
-    crowd_est <- aggregate_estimates(sim_data$se, method = "mean")
-    
-    # squared errors
-    crowd_sq_errors[i] <- crowd_est^2
-    individual_sq_errors[i] <- mean(sim_data$se^2)  
+    return(list(
+      trial_results = results,
+      aggregate_results = aggregate_results
+    ))
   }
-  
-  # mean squared errors
-  mse_crowd <- mean(crowd_sq_errors)
-  mse_indiv <- mean(individual_sq_errors)
-  
-  # RMSE
-  rmse_crowd <- sqrt(mse_crowd)
-  rmse_indiv <- sqrt(mse_indiv)
-  
-  list(
-    MSE_crowd = mse_crowd,
-    MSE_indiv = mse_indiv,
-    RMSE_crowd = rmse_crowd,
-    RMSE_indiv = rmse_indiv
-  )
 }
 
-set.seed(123)
-res <- simulate_woc_experiment(n_sims = 10, n_subjects = 10)
-res
+normal_group_results <- runSimulation(
+  n_individuals = 10,              
+  true_value = 100,              
+  social_info_type = "mean",
+  knowledge_distribution = "uniform", 
+  knowledge_params = list(
+    min = 0.1,                   
+    max = 0.9                     
+  ),
+  n_trials = 100
+)
 
-
+print(normal_group_results$aggregate_results)
 
