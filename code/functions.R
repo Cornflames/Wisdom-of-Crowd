@@ -15,6 +15,13 @@ dPriorKnowledge <- function(n_individuals, distribution_type = "uniform", params
            knowledge <- pmin(pmax(rnorm(n_individuals, mean = mean_val, sd = sd_val), 0), 1)
            return(knowledge)
          },
+         "truncnorm" = {
+           # Truncated normal distribution between between 0 and 1
+           # with specified mean and sd
+           mean_val <- if(is.null(params$mean)) 0.5 else param$mean
+           sd_val <- if(is.null(params$sd)) 0.15 else param$sd
+           truncnorm::rtruncnorm(n_individuals, a = 0, b = 1, mean = mean_val, sd = sd_val)
+         },
          "beta" = {
            # Beta distribution for more flexible shapes
            alpha <- if(is.null(params$alpha)) 2 else params$alpha
@@ -52,12 +59,14 @@ calculateConfidence <- function(prior_knowledge) {
 
 # Distribution of Individual First Estimates
 dIndividualFirstEstimate <- function(prior_knowledge, true_value) {
-  # Returns parameters of the distribution, not samples
-  mean_guess <- true_value * (0.5 + 0.3 * prior_knowledge)
-  sd_guess <- 30 * (1 - prior_knowledge)
-  
+  # The higher prior knowledge, the smaller the distribution of individual estimates
+  # For maximum prior knowledge = 1, sd_of_log = 0.05
+  # For minimum prior knowledge = 0, sd_of_log = 1
+  sd_of_log = -0.95 * prior_knowledge + 1
+  mean_of_log = ln(true_value) - sd_of_log^2/2
+ 
   # Generate a sample from this distribution
-  estimate <- rnorm(1, mean = mean_guess, sd = sd_guess)
+  estimate <- rlnorm(1, meanlog = mean_of_log, sdlog = sd_of_log)
   
   return(estimate)
 }
@@ -69,20 +78,39 @@ dGroupFirstEstimate <- function(prior_knowledge_vector, true_value) {
   return(first_estimates)
 }
 
+# Determine the weight a person puts on advice
+getWeightOnAdvice <- function(confidence, first_estimate, social_information) {
+  # The base value of WOA is a persons confidence which can be modified
+  # by the distance between the first estimate and the social information
+  # The distance is standardized to the social information
+  # A distance of 1 is considered to be large as it is 100% of the social infomation
+  distance_fe_si <- abs((first_estimate / social_information) - 1)
+  # The higher the distance, the more confidence is mitigated
+  # If the first estimate equals the social infomation, WOA is solely determined by the confidence
+  # If the distance is >=100% of the social information, confidence is lowered to 0
+  distance_factor <- 1 - min(distance_fe_si, 1)
+  return(1 - (confidence * distance_factor))
+}
+
 # Psi function for integrating social information
 psi <- function(first_estimate, social_info, confidence) {
-  # Weight between first estimate and social information based on confidence
-  weight_own <- confidence
-  weight_social <- 1 - confidence
-  
-  second_estimate <- weight_own * first_estimate + weight_social * social_info
-  return(second_estimate)
+  # Weight on advice from confidence and the distance between first estimate and social info
+  weight_on_advice <- getWeightOnAdvice(confidence, first_estimate, social_info)
+  # Weight on the inividual first estimate
+  self_weight <- 1 - weight_on_advice
+
+  # The expected value for the second estimate based on weight on advice and self weight
+  # Interpreted as a persons tendency to a second estimate value, it can be seen
+  # as the central tendency of her second estimate distribution
+  expected_second_estimate <- weight_on_advice * social_info + self_weight * first_estimate
+  return(expected_second_estimate)
 }
 
 # Distribution of Individual Second Estimates
 dIndividualSecondEstimate <- function(first_estimate, social_info, confidence) {
-  # Returns the second estimate after applying the Psi function
-  second_estimate <- psi(first_estimate, social_info, confidence)
+  # Returns the second estimate after applying the Psi function and random noise
+  expected_second_estimate <- psi(first_estimate, social_info, confidence)
+  second_estimate <- rnorm(mean = expected_second_estimate, sd = 1)
   return(second_estimate)
 }
 
@@ -268,3 +296,5 @@ normal_group_results <- runSimulation(
 
 print(normal_group_results$aggregate_results)
 
+# Set seed for reproducibility
+#set.seed(5)
