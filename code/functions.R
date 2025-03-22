@@ -211,28 +211,50 @@ runSimulation <- function(n_individuals, true_value, knowledge_distribution = "u
     # Generate first estimates
     first_estimates <- dGroupFirstEstimate(prior_knowledge, true_value)
     
-    # Calculate social information
+    # Calculate personalized social information and second estimates
     if(!is.null(manipulated_social_info)) {
+      # If social_info is manipulated, use the same value for everyone
       social_info <- manipulated_social_info
+      second_estimates <- dGroupSecondEstimates(first_estimates, social_info, confidence)
     } else {
-      switch(social_info_type,
-             "mean" = {
-               social_info <- mean(first_estimates)
-             },
-             "median" = {
-               social_info <- median(first_estimates)
-             },
-             "trimmed_mean" = {
-               # Remove the top and bottom 10%
-               social_info <- mean(first_estimates, trim = 0.1)
-             },
-             # Default to mean
-             social_info <- mean(first_estimates)
-      )
+      # Create vectors to store personalized social info and second estimates
+      social_info_vector <- numeric(n_individuals)
+      second_estimates <- numeric(n_individuals)
+      
+      # Calculate personalized social info for each individual (excluding their own estimate)
+      for(j in 1:n_individuals) {
+        # Get all estimates except this person's
+        other_estimates <- first_estimates[-j]
+        
+        # Calculate social information based on specified type
+        switch(social_info_type,
+               "mean" = {
+                 social_info_vector[j] <- mean(other_estimates)
+               },
+               "median" = {
+                 social_info_vector[j] <- median(other_estimates)
+               },
+               "trimmed_mean" = {
+                 # Remove the top and bottom 10%
+                 social_info_vector[j] <- mean(other_estimates, trim = 0.1)
+               },
+               # Default to mean
+               {
+                 social_info_vector[j] <- mean(other_estimates)
+               }
+        )
+        
+        # Calculate second estimate for this person using their personalized social info
+        second_estimates[j] <- dIndividualSecondEstimate(
+          first_estimate = first_estimates[j],
+          social_info = social_info_vector[j],
+          confidence = confidence[j]
+        )
+      }
+      
+      # For compatibility with the rest of the code, store the average social info
+      social_info <- mean(social_info_vector)
     }
-    
-    # Generate second estimates
-    second_estimates <- dGroupSecondEstimates(first_estimates, social_info, confidence)
     
     # Determine WOC effects
     woc_effects <- determineWOCSocialInfluence(first_estimates, second_estimates, true_value)
