@@ -1,0 +1,93 @@
+---
+title             : "Modellierung der Schätzprozesse von Individuen und Gruppen: Auswirkungen der Gabe von sozialer Information auf die Schätzgenauigkeit"
+shorttitle        : "Sozialer Einfluss im Decision-Making"
+
+author: 
+  - name          : "Benedikt Ehrenwirth"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Dr.-Dürrwanger-Str. 31B"
+    email         : "B.Ehrenwirth@campus.lmu.de"
+    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
+      - "Author dieser Arbeit"
+      - "Konzeptualisierung des Basismodells"
+      - "Erweiterung des Modells"
+      - "Plots"
+  - name          : "Simeon Kovac"
+    affiliation   : "2"
+    role:
+      - "Konzeptualisierung des Basismodells"
+  - name          : "Thomas Mentzel"
+    affiliation   : "3"
+    role:
+      - "Konzeptualisierung des Basismodells"
+
+affiliation:
+  - id            : "1"
+    institution   : "Ludwig-Maximilians-Universität München (LMU)"
+  - id            : "2"
+    institution   : "Ludwig-Maximilians-Universität München (LMU)"
+  - id            : "3"
+    institution   : "Ludwig-Maximilians-Universität München (LMU)"
+
+authornote: |
+  Diese Arbeit ist eine studentische Hausarbeit im Empirisch-psychologischen Praktikum “Formale Modellierung in der Psychologie”. Der Author dieser Arbeit ist Benedikt Ehrenwirth.
+abstract:
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : ["decision-making", "social-influence", "Wisdom-of-crowds", "estimation-accuracy"]
+wordcount         : "X"
+
+bibliography      : ["references.bib", "r-references.bib"]
+
+floatsintext      : no
+linenumbers       : yes
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+r_refs("r-references.bib")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+# Einleitung
+
+# Das Phänomen
+
+# Die Theorie
+
+# Formalisierung
+
+# Simulationen
+Für die Simulationen haben wir `r cite_r("r-references.bib")` verwendet.
+
+## Erwartungen
+
+## Ergebnisse
+
+# Diskussion
+
+# Persönliche Reflektion
+
+
+\newpage
+
+# Referenzen
+
+::: {#refs custom-style="Bibliography"}
+:::
