@@ -83,17 +83,17 @@ dGroupFirstEstimate <- function(prior_knowledge_vector, true_value) {
 
 # Determine the weight a person puts on advice
 getWeightOnAdvice <- function(confidence, first_estimate, social_information) {
-  # The base value of WOA is a persons confidence which can be modified
-  # by the distance between the first estimate and the social information
-  # The distance is standardized to the social information
-  # A distance of 1 is considered to be large as it is 100% of the social infomation
-  distance_fe_si <- abs((first_estimate / social_information) - 1)
-  # The higher the distance, the more confidence is mitigated
-  # If the first estimate equals the social infomation, WOA is solely determined by the confidence
-  # If the distance is >=100% of the social information, confidence is lowered to 0
-  distance_factor <- 1 - min(distance_fe_si, 1)
-  return(1 - (confidence * distance_factor))
+  # Calculate log-based distance
+  log_ratio <- log(social_information / first_estimate)
+  distance <- abs(log_ratio)
+  
+  # tanh of large distances approaches 1
+  weight_of_advice <- (1 - confidence) * (1 + confidence * tanh(distance))
+  weight_of_advice <- max(0, min(1, weight_of_advice))
+
+  return(weight_of_advice)
 }
+
 
 # Psi function for integrating social information
 psi <- function(first_estimate, social_info, confidence) {
@@ -306,6 +306,8 @@ runSimulation <- function(n_individuals, true_value, knowledge_distribution = "u
     ))
   }
 }
+
+
 
 normal_group_results <- runSimulation(
   n_individuals = 10,              
