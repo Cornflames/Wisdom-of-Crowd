@@ -63,7 +63,7 @@ dIndividualFirstEstimate <- function(prior_knowledge, true_value) {
   # For maximum prior knowledge = 1, sd_of_log = 0.05
   # For minimum prior knowledge = 0, sd_of_log = 1
   sd_of_log = -0.95 * prior_knowledge + 1
-  mean_of_log = ln(true_value) - sd_of_log^2/2
+  mean_of_log = log(true_value) - sd_of_log^2/2
  
   # Generate a sample from this distribution
   estimate <- rlnorm(1, meanlog = mean_of_log, sdlog = sd_of_log)
@@ -110,7 +110,7 @@ psi <- function(first_estimate, social_info, confidence) {
 dIndividualSecondEstimate <- function(first_estimate, social_info, confidence) {
   # Returns the second estimate after applying the Psi function and random noise
   expected_second_estimate <- psi(first_estimate, social_info, confidence)
-  second_estimate <- rnorm(mean = expected_second_estimate, sd = 1)
+  second_estimate <- rnorm(1, mean = expected_second_estimate, sd = 1)
   return(second_estimate)
 }
 
