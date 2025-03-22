@@ -1,3 +1,6 @@
+# Set seed for reproducibility
+set.seed(40)
+
 # Distribution of Prior Knowledge
 dPriorKnowledge <- function(n_individuals, distribution_type = "uniform", params = list()) {
   switch(distribution_type,
@@ -295,6 +298,3 @@ normal_group_results <- runSimulation(
 )
 
 print(normal_group_results$aggregate_results)
-
-# Set seed for reproducibility
-#set.seed(5)
