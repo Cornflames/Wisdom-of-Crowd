@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  man]{apa6}
+  man,floatsintext]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
@@ -184,12 +184,6 @@
 {}{\PatchFailed}
 \makeatother
 \keywords{decision-making, social-influence, Wisdom-of-crowds, estimation-accuracy\newline\indent Word count: X}
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
 \usepackage{lineno}
 
 \linenumbers
@@ -213,11 +207,11 @@
 \date{}
 
 
-\shorttitle{Sozialer Einfluss im Decision-Making}
+\shorttitle{Sozialer Einfluss und die Schätzgenauigkeit}
 
 \authornote{
 
-Diese Arbeit ist eine studentische Hausarbeit im Empirisch-psychologischen Praktikum ``Formale Modellierung in der Psychologie''. Der Author dieser Arbeit ist Benedikt Ehrenwirth.
+Diese Arbeit ist eine studentische Hausarbeit im Empirisch-psychologischen Praktikum ``Formale Modellierung in der Psychologie''. Der Author dieser Arbeit ist \emph{Benedikt Ehrenwirth}. Der Code für die Simulationen und die Erstellung dieses Berichts befinden sich in dem \textbf{GitHub-Repositorium} unter folgendem Link: \url{https://github.com/Cornflames/Wisdom-of-Crowd}. In der README-Datei des Repositoriums befindet ein Link zu einem Google-Docs, das die \emph{Appendizes} enthält (\textbf{die Construct Source Table und die Variablentabelle}).
 
 The authors made the following contributions. Benedikt Ehrenwirth: Author dieser Arbeit, Konzeptualisierung des Basismodells, Erweiterung des Modells, Plots; Simeon Kovac: Konzeptualisierung des Basismodells; Thomas Mentzel: Konzeptualisierung des Basismodells.
 
@@ -230,25 +224,59 @@ Correspondence concerning this article should be addressed to Benedikt Ehrenwirt
 \begin{document}
 \maketitle
 
+\section{Zielsetzung}\label{zielsetzung}
+
+Die Forschung zum decision-making von Gruppen und ihren einzelnen Mitgliedern ist zu gemischten Befunden über die Auswirkungen von sozialem Einfluss auf die einzelnen Entscheidungen und die der Gruppe gelangt. Die vorliegende Arbeit versucht, einzelne Befunde aus der Literatur in ein Modell der Entscheidungsfindung auf individueller und auf Gruppenebene zu integrieren. So kann geprüft werden, ob die jetzige Forschung (natürlich nur grob umrissen) ein kohärentes Bild ergibt und welche Zusammenhänge weiter beforscht werden sollten, und zu welchen Aussagen dieses Modell über die Schätzgenauigkeit der einzelnen Mitglieder und der Gruppe kommen würde.
+
 \section{Einleitung}\label{einleitung}
+
+Die Forschung zum \emph{decision-making} von Individuen und Gruppen untersucht u.a. die Umstände, unter denen Gruppen genaue Schätzungen abgeben, und wann einzelne Gruppenmitglieder akkurater schätzen als die Gruppe. Die robusten Befunde zum Wisdom-of-Crowds-Effekt (WOC) legen nahe, dass Gruppenschätzungen dann sehr oft akkurater sind als die Schätzungen der meisten Individuen bzw. des durchschnittlichen Individuums in der Gruppe, wenn Personen ihre Schätzungen unabhängig voneinander abgeben und dann über diese aggregiert wird (e.g., Jayles et al., 2017). Die Unabhängigkeit soll die Diversität der Einzelurteile bewahren, die durch eine möglichst gleichmäßige Streuung der Werte um den wahren Wert herum (\emph{bracketing}) einen schädlichen Gruppenbias ausgleichen können (Krueger, 2012).
+
+Nicht zuletzt wegen der Alltagsferne der Unabhängigkeitsannahme wird untersucht, welche Auswirkungen sozialer Einfluss auf die individuellen Schätzungen und die resultierenden Gruppenschätzungen hat. Sozialer Einfluss wird meistens mit dem JAS-Paradigma (zitiert nach Bailey, Leon, Ebner, Moustafa, \& Weidemann, 2023) untersucht, bei dem Personen zuerst eine unabhängige Schätzung einer objektiven Größe abgeben, dann Informationen über die Schätzungen der anderen Gruppenmitgliedern erhalten (soziale Information), und ihre Schätzung noch einmal revidieren können, um zu einer zweiten Schätzung zu gelangen. Anreize für möglichst genaue Schätzungen werden gegeben und der Informationsaustausch anonymisiert, um den \emph{informational influence} zu fördern und den \emph{normative influence} gering zu halten (Rader, Larrick, \& Soll, 2017).
 
 \section{Das Phänomen}\label{das-phuxe4nomen}
 
-\section{Die Theorie}\label{die-theorie}
+In dieser Arbeit beschränken wir uns auf Studien, die mit dem JAS-Paradigma vereinbar sind und die Auswirkungen von sozialem Einfluss im Hinblick auf die Schätzgenauigkeit von Gruppen untersuchen. Dabei werden zwei Messungen für die Schätzgenauigkeit der Gruppe unterschieden: Maße für die Schätzgenauigkeit der Individuen in der Gruppe und Maße für die Genauigkeit der Gruppenschätzung. Nach Jayles et al. (2017) nennen wir die beiden Maße \emph{collective accuracy} und \emph{collective performance}. Untersuchen Studien den sozialen Einfluss auf die WOC, sind sie v.a. daran interessiert, wie sich die collective performance nach Gabe sozialer Information verändert. Da viele Studien den Fokus aber mehr auf die collective accuracy legen Yaniv (2004) und Studien mit Fokus auf die performance diese ins Verhältnis zur accuracy setzen Frey \& Van De Rijt (2021), beschränken wir uns auf den sozialen Einfluss auf die collective accuray als kleinsten gemeinsamen Nenner der Literatur.
 
-\section{Formalisierung}\label{formalisierung}
+Außerdem wirken die Befunde zum Einfluss sozialer Information auf die accuracy konsistenter als zur performance. Lorenz, Rauhut, Schweitzer, and Helbing (2011) stellte einen Performance-Verlust nach sozialem Einfluss fest, gleichzeitig kann sich bei einer solcher Verschlechterung der Gruppenschätzung aber die Genauigkeit der einzelnen Schätzungen erhöhen (Frey \& Van De Rijt, 2021). Becker et al. (2017) stellten sowohl eine Verbesserung der performance als auch der accuracy fest und Yaniv (2004) eine Verbesserung der accuracy. Nach dieser Literatursuche kommen wir zu folgender Formulierung des Phänomens (\textbf{Fig. 1}): \emph{Wenn der Schätzprozess von Individuen wo abläuft, wie es das JAS-Paradigma zeichnet, ist die mittlere Abweichung der einzelnen Schätzungen der Gruppenmitglieder vom wahren Wert (collective accuracy) nach Gabe von sozialer Information geringer als ohne soziale Information}. Als zusammenfassendes Maß für die collective accuracy verwenden wir also das arithmetische Mittel der einzelnen Abweichungen. Nach einer Einordnung einzelner Studien in die UTOS-Dimeonsionen kommen wir zu dem Schluss, dass das Phänomen nicht generalisierbar ist und die Stärke der Evidenz schwach ist (\textbf{Box. 1}).
 
-\section{Simulationen}\label{simulationen}
 
-Für die Simulationen haben wir R (Version 4.4.2; R Core Team, 2024) and the R-packages \emph{papaja} (Version 0.1.3; Aust \& Barth, 2024) and \emph{tinylabels} (Version 0.2.5; Barth, 2025) verwendet.
 
-\subsection{Erwartungen}\label{erwartungen}
+\begin{figure}
+\centering
+\includegraphics{Abbildungen/VAST_Phänomen.png}
+\caption{\label{fig:my-figure}Das Phänomen.}
+\end{figure}
 
-\subsection{Ergebnisse}\label{ergebnisse}
+Da sich die Zielvariable collective accuracy auf Gruppenebene befindet, aber ein emergentes Phänomen der Schätzprozesse einzelner Gruppenmitglieder ist, ist der individuelle Schätzprozess eines Individuums in die Gruppenschätzung eingebettet und wirkt auf deren Ergebnisse. Der Übergang zwischen individueller und Gruppenschätzung wird über die Beziehung von GFE zu IFE und von GSE zu ISE hergestellt; GFE und ISE sind lediglich die Sammlungen der einzelnen Schätzungen. Als solche werden sie durch die eingehenden individuellen Schätzungen bestimmt, ungeachtet der Reihenfolge kann eine einzelne Schätzung umgekehrt als Realisation der Verteilung der Schätzungen in der Gruppe verstanden werden (bidirektionale p-relationships). Aus den Sammlungen GFE und ISE wird dann die collective accuracy berechnet.
 
-\section{Diskussion}\label{diskussion}
+\section{Das Modell}\label{das-modell}
 
-\section{Persönliche Reflektion}\label{persuxf6nliche-reflektion}
+Die Modellierung der Gruppenschätzung beruht auf der Modellierung der ihr zugrundeliegenden individuellen Schätzprozesse der \emph{n} Gruppenmitglieder (\textbf{Fig. 2}). Im Mittelpunkt der Beschreibung dieser Schätzprozesse steht die Annahme aus der Literatur, dass Personen den gewichteten Mittelwert aus ihrer ersten Schätzung (IFE) und der sozialen Information (SI) nehmen, um zu ihrer zweiten Schätzung (ISE) zu gelangen. Das Gewicht, das der SI beigemessen wird (\emph{Weight on Advice, WOA}), wird dabei gegen das Gewicht aufgewogen, das Personen der IFE beimessen (\emph{Self-Weight, 1 -- WOA}). Wir gehen allerdings davon aus, dass diese Verrechnung die zweite Schätzung nicht deterministisch bestimmt, sondern lediglich den Mittelwert einer schmalen Normalverteilung festgelegt, die nicht weiter spezifizierten Einflüssen Rechnung trägt. Das Ergebnis der Formel kann psychologisch als der Wert interpretiert werden, zu dem eine Person im Mittel hintendiert (zentrale Tendenz der ISE-Verteilung).
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Abbildungen/VAST_Modell.png}
+\caption{\label{fig:my-figure2}Das Modell.}
+\end{figure}
+
+Psychologisch können die WOA und das Self-Weight einer Person als ihre Sensitivität bzw. Resistenz gegenüber sozialer Information interpretiert werden Madirolas \& De Polavieja (2015). Als mathematische Größen bestimmen sie, wie weit Personen bei ihrer ersten Schätzung bleiben oder sich der sozialen Information anpassen (Revisionsstärke). Deshalb können sie als indirekte Maße dafür gelten, wie weit die erste Schätzung einer Person in die Gruppenschätzung miteingeht und diese mitbestimmt. Becker et al. (2017) nennen diesen Einfluss social influence weight, und ihre Argumentation für die collective performance lässt sich auch auf die collective accuracy übertragen, solange diese als Mittelwert der zweiten Schätzungen berechnet wird, in die ja die ersten Schätzungen je nach Self-Weights unterschiedlich stark eingehen.
+
+Eine weitere Interpretation des Self-Weights wird von Madirolas and De Polavieja (2015) geliefert: Die Autoren spekulieren, ob das Self-Weight möglicherweise eine behaviorale Messung der Confidence einer Person ist (CONF2). Tatsächlich berichten Rader et al. (2017) und Bailey et al. (2023) von einer negativen Korrelation zwischen Confidence und dem WOA (CONF1 \& CONF2). Wir interpretieren die Confidence primär als sachbezogenes Vertrauen in die erste Schätzung und vernachlässigen anderweitige Einflüsse (bspw. durch das generelle Selbstvertrauen einer Person). Wir gehen dementsprechend davon aus, dass sich das Vertrauen von Personen in ihre ersten Schätzungen direkt aus ihrem Vorwissen ergibt. Durch diese Mediation korreliert das Vorwissen positiv mit dem Self-Weight und negativ mit dem WOA. Es ist davon auszugehen, dass das Vorwissen unterschiedlich in der Gruppe verteilt ist (PK1). In unserer Simulation wird das Vorwissen einer Person (IPK) aus dieser Verteilung (GPK) gezogen.
+
+Madirolas and De Polavieja (2015) und Jayles et al. (2017) nehmen den Logarithmus der (unabhängigen) Schätzungen von Personen, um von ihrer ursprünglich nach rechts verzerrten Verteilung zu symmetrischeren Normal- oder Cauchy-Verteilungen zu gelangen. Während die Mehrheit der Werte eher niedrig sind, streuen einige Werte weit nach oben, und diese Verteilung kann als logarithmische Normalverteilung dargestellt werden. Wir nehmen deshalb für jede einzelne Person eine solche Lognormal-Verteilung ihrer ersten Schätzungen an (IFE). Wir gehen davon aus, dass die IFE-Verteilungen nicht für alle Personen gleich aussehen, sondern sich je nach ihrem Vorwissen unterscheiden. Höheres Vorwissen sollte die individuelle Schätzgenauigkeit erhöhen, sodass sich die IFE-Verteilung um den wahren Wert zuspitzt (\textbf{Fig. 3}). Für den Zusammenhang zwischen Vorwissen und Schätzgenauigkeit spricht Jayles et al. (2017)´s Erklärung für die gefundenen, breit-geflügelten Cauchy-Verteilungen: Die hohe Aufgabenschwierigkeit sorgt dafür, dass Personen beim Schätzen wegen geringen Vorwissens öfter weit entfernt vom wahren Wert liegen.
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Abbildungen/Plot_PK_FE.png}
+\caption{\label{fig:my-figure3}IFE Verteilungen für unterschiedliche Vorwissenswerte.}
+\end{figure}
+
+Ein weiterer Einflussfaktor auf das WOA ist die Abweichung der ersten Schätzung einer Person von der sozialen Information, die sie erhält (logarithmisch transformiert). In Studien wurde ein negativer Zusammenhang zwischen dieser Abweichung und dem der WOA festgestellt (D1 \& D2 \& D3). Da die Revisionstärke mit zunehmender Schätzgenauigkeit von Personen aber auch dann noch steigt, wenn die Distanz konstant gehalten wird (Becker et al., 2017), nehmen wir an, dass die Abweichung die WOA nicht erschöpfend vorhersagt, sondern lediglich zusätzlich zur Confidence wirkt, indem sie diese modifiziert. Rader et al. (2017) berichten, dass eine geringe Abweichung die Confidence von Personen erhöht (D5). Analog gehen wir davon aus, dass eine hohe Abweichung die Confidence verringert. Wir gehen aber nicht von einem linearen Zusammenhang aus, sondern dass die bestätigende Wirkung geringer Abweichungen bei unsicheren Personen stärker ist und die verunsichernde Wirkung großer Abweichungen bei Personen mit hoher Confidence stärker ist (\textbf{Fig. 4}). So kann erklärt werden, dass Personen sich naher sozialer Information oft nicht anpassen. Außerdem zitieren Rader et al. (2017) einen Einzelbefund davon, dass Experten sich von ferner sozialer Information nicht beirren ließen.
 
 \newpage
 
@@ -256,14 +284,35 @@ Für die Simulationen haben wir R (Version 4.4.2; R Core Team, 2024) and the R-p
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-R-papaja}
-Aust, F., \& Barth, M. (2024). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. \url{https://doi.org/10.32614/CRAN.package.papaja}
+\bibitem[\citeproctext]{ref-bailey_meta-analysis_2023}
+Bailey, P. E., Leon, T., Ebner, N. C., Moustafa, A. A., \& Weidemann, G. (2023). A meta-analysis of the weight of advice in decision-making. \emph{Current Psychology}, \emph{42}(28), 24516--24541. \url{https://doi.org/10.1007/s12144-022-03573-2}
 
-\bibitem[\citeproctext]{ref-R-tinylabels}
-Barth, M. (2025). \emph{{tinylabels}: Lightweight variable labels}. \url{https://doi.org/10.32614/CRAN.package.tinylabels}
+\bibitem[\citeproctext]{ref-becker_network_2017}
+Becker, J., Brackbill, D., \& Centola, D. (2017). Network dynamics of social influence in the wisdom of crowds. \emph{Proceedings of the National Academy of Sciences}, \emph{114}(26). \url{https://doi.org/10.1073/pnas.1615978114}
 
-\bibitem[\citeproctext]{ref-R-base}
-R Core Team. (2024). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+\bibitem[\citeproctext]{ref-frey_social_2021}
+Frey, V., \& Van De Rijt, A. (2021). Social influence undermines the wisdom of the crowd in sequential decision making. \emph{Management Science}, \emph{67}(7), 4273--4286. \url{https://doi.org/10.1287/mnsc.2020.3713}
+
+\bibitem[\citeproctext]{ref-gurcay_power_2015}
+Gürçay, B., Mellers, B. A., \& Baron, J. (2015). The power of social influence on estimation accuracy. \emph{Journal of Behavioral Decision Making}, \emph{28}(3), 250--261. \url{https://doi.org/10.1002/bdm.1843}
+
+\bibitem[\citeproctext]{ref-jayles_how_2017}
+Jayles, B., Kim, H., Escobedo, R., Cezera, S., Blanchet, A., Kameda, T., \ldots{} Theraulaz, G. (2017). How social information can improve estimation accuracy in human groups. \emph{Proceedings of the National Academy of Sciences}, \emph{114}(47), 12620--12625. \url{https://doi.org/10.1073/pnas.1703695114}
+
+\bibitem[\citeproctext]{ref-krueger_social_2012}
+Krueger, J. I. (Ed.). (2012). \emph{Social judgment and decision making}. New York: Psychology Press.
+
+\bibitem[\citeproctext]{ref-lorenz_how_2011}
+Lorenz, J., Rauhut, H., Schweitzer, F., \& Helbing, D. (2011). How social influence can undermine the wisdom of crowd effect. \emph{Proceedings of the National Academy of Sciences}, \emph{108}(22), 9020--9025. \url{https://doi.org/10.1073/pnas.1008636108}
+
+\bibitem[\citeproctext]{ref-madirolas_improving_2015}
+Madirolas, G., \& De Polavieja, G. G. (2015). Improving collective estimations using resistance to social influence. \emph{{PLOS} Computational Biology}, \emph{11}(11), e1004594. \url{https://doi.org/10.1371/journal.pcbi.1004594}
+
+\bibitem[\citeproctext]{ref-rader_advice_2017}
+Rader, C. A., Larrick, R. P., \& Soll, J. B. (2017). Advice as a form of social influence: Informational motives and the consequences for accuracy. \emph{Social and Personality Psychology Compass}, \emph{11}(8), e12329. \url{https://doi.org/10.1111/spc3.12329}
+
+\bibitem[\citeproctext]{ref-yaniv_receiving_2004}
+Yaniv, I. (2004). Receiving other people's advice: Influence and benefit. \emph{Organizational Behavior and Human Decision Processes}, \emph{93}(1), 1--13. \url{https://doi.org/10.1016/j.obhdp.2003.08.002}
 
 \end{CSLReferences}
 
