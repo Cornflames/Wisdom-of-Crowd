@@ -21,8 +21,8 @@ dPriorKnowledge <- function(n_individuals, distribution_type = "uniform", params
          "truncnorm" = {
            # Truncated normal distribution between between 0 and 1
            # with specified mean and sd
-           mean_val <- if(is.null(params$mean)) 0.5 else param$mean
-           sd_val <- if(is.null(params$sd)) 0.15 else param$sd
+           mean_val <- if(is.null(params$mean)) 0.5 else params$mean
+           sd_val <- if(is.null(params$sd)) 0.15 else params$sd
            truncnorm::rtruncnorm(n_individuals, a = 0, b = 1, mean = mean_val, sd = sd_val)
          },
          "beta" = {
@@ -83,6 +83,49 @@ dGroupFirstEstimate <- function(prior_knowledge_vector, true_value) {
 
 # Determine the weight a person puts on advice
 getWeightOnAdvice <- function(confidence, first_estimate, social_information) {
+  # The distance between social information and
+  # first estimate as proportion of the first estimate
+  distance_perc <- abs(social_information - first_estimate) / first_estimate
+  
+  # Orientation points through which the graph of the
+  # distance-WOA-relationship will go, given a base level
+  # of confidence. The higher the confidence, the larger
+  # deviations are required to create the same change
+  # in the confidence.
+  #----------------------------------------------------------
+  # The WOA a person should have when beeing maximally
+  # encouraged (distance == 0) (the y-axis intercept)
+  y1_woa <- (1 - confidence) * 0.5
+  # The level of WOA a person when beeing discouraged
+  # to a certain degree
+  y2_woa <- (1 - confidence) * 1.5
+  # The distance required to reach y2_was, given a certain
+  # level of confidence
+  x2 <- (-5/6) * confidence
+  # conf = 0.2 => 50% deviation
+  # conf = 0.5 => 100% deviation
+  # conf = 0.8 => 150% deviation
+  
+  # Fit graph by determing the scaling factor
+  a <- ((1 - confidence)*1.5 - (1 - confidence)*0.5)/x2
+  
+  weight_on_advice <- a * (distance_perc^(1/2)) + y1_woa
+  weight_on_advice <- max(0, min(1, weight_on_advice))
+  
+  return(weight_on_advice)
+  ## Calculate log-based distance
+  #log_ratio <- log(social_information / first_estimate)
+  #distance <- abs(log_ratio)
+  #
+  ## tanh of large distances approaches 1
+  #weight_of_advice <- (1 - confidence) * (1 + confidence * tanh(distance))
+  #weight_of_advice <- max(0, min(1, weight_of_advice))
+}
+
+#===========#----------------------------------------------------------------------------
+# EXTENSION #
+#===========#
+getWeightOnAdviceExtended <- function(confidence, first_estimate, social_information) {
   # Calculate log-based distance
   log_ratio <- log(social_information / first_estimate)
   distance <- abs(log_ratio)
@@ -93,12 +136,21 @@ getWeightOnAdvice <- function(confidence, first_estimate, social_information) {
 
   return(weight_of_advice)
 }
-
+#----------------------------------------------------------------------------------------
 
 # Psi function for integrating social information
-psi <- function(first_estimate, social_info, confidence) {
+psi <- function(first_estimate, social_info, confidence, extension = FALSE) {
   # Weight on advice from confidence and the distance between first estimate and social info
-  weight_on_advice <- getWeightOnAdvice(confidence, first_estimate, social_info)
+  weight_on_advice <- numeric()
+  if (!extension) {
+    weight_on_advice <- getWeightOnAdvice(confidence, first_estimate, social_info)
+  } else {
+    #===========#-------------------------------------------------------------------------
+    # EXTENSION #
+    # ==========#
+    weight_on_advice <- getWeightOnAdviceExtended(confidence, first_estimate, social_info)
+    #-------------------------------------------------------------------------------------
+  }
   # Weight on the inividual first estimate
   self_weight <- 1 - weight_on_advice
 
@@ -110,9 +162,9 @@ psi <- function(first_estimate, social_info, confidence) {
 }
 
 # Distribution of Individual Second Estimates
-dIndividualSecondEstimate <- function(first_estimate, social_info, confidence) {
+dIndividualSecondEstimate <- function(first_estimate, social_info, confidence, extension = FALSE) {
   # Returns the second estimate after applying the Psi function and random noise
-  expected_second_estimate <- psi(first_estimate, social_info, confidence)
+  expected_second_estimate <- psi(first_estimate, social_info, confidence, extension = extension)
   second_estimate <- rnorm(1, mean = expected_second_estimate, sd = 1)
   return(second_estimate)
 }
