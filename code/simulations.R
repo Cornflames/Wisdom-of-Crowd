@@ -245,7 +245,7 @@ true_value <- 1000
 # As the IFE distributions are not identially distributed,
 # we dont expect a convergence of the mean of the first estimates
 # to the true value (central limit theorem).
-n_group_members <- 100
+n_group_members <- 20
 
 #------------#
 # BASE MODEL #

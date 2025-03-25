@@ -21,31 +21,15 @@ woa_conf_si_data <- expand.grid(
   conf = seq(from = 0, to = 1, by = 0.1),
   distance = seq(from = 0, to = 4, by = 0.1)
 )
-
-# TESTFUNKTION
-d_woa <- function(confidence, deviation) {
-  y1_woa <- (1 - confidence) * 0.5
-  y2_woa <- (1 - confidence) * 1.5
-
-  x2 <- (5/6) * confidence
   
-  a <- ((1 - confidence)*1.5 - (1 - confidence)*0.5)/x2
-  
-  weight_on_advice <- a * (deviation^(1/2)) + y1_woa
-  weight_on_advice <- max(0, min(1, weight_on_advice))
-  
-  return(a * (deviation^(1/2)) + y1_woa)
-}
-
-woa_conf_si_data <- woa_conf_si_data %>% rowwise() %>% mutate(woa = d_woa(conf, distance))
+woa_conf_si_data <- woa_conf_si_data %>% rowwise() %>% mutate(woa = (1 - conf) * (1 + conf * tanh(distance)))
 
 ggplot(data = woa_conf_si_data, mapping = aes(x = distance, y = woa, colour = factor(conf))) +
-  scale_x_continuous(name = "Distance", breaks = seq(0, 4, by = 0.5)) +
+  scale_x_continuous(name = "Distance |log(SI/FE)|", breaks = seq(0, 4, by = 0.5)) +
   ylab("Weight on Advice (WOA)") +
   guides(
     colour = guide_legend("Confidence")
   ) +
-  geom_point() +
   geom_line()
 
 # Plot the distribution of individual estimates for
@@ -83,22 +67,41 @@ violin + boxplot
 # EXTENSION #
 #-----------#
 
-# Plot of weight on advice against different confidence levels
-# and distances between first estimate and social info
-woa_conf_si_data <- expand.grid(
-  conf = seq(from = 0, to = 1, by = 0.1),
-  distance = seq(from = 0, to = 4, by = 0.1)
+# Plot reaction strength against distance for different
+# reactivity levels
+dist_rea_data <- expand.grid(
+  distance = seq(from = 0, to = 1, by = 0.1),
+  reactivity = seq(from = 0, to = 1, by = 0.2)
 )
-woa_conf_si_data <- woa_conf_si_data %>% rowwise() %>% mutate(woa = (1 - conf) * (1 + conf * tanh(distance)))
+dist_rea_data <- dist_rea_data %>% rowwise() %>% mutate(react_factor = reactivity * (distance^2) / 4)
 
-ggplot(data = woa_conf_si_data, mapping = aes(x = distance, y = woa, colour = factor(conf))) +
-  scale_x_continuous(name = "Distance", breaks = seq(0, 4, by = 0.5)) +
+ggplot(data = dist_rea_data, mapping = aes(x = distance, y = react_factor, colour = factor(reactivity))) +
+  scale_x_continuous(name = "Distance |log(SI/FE)|", breaks = seq(0, 4, by = 0.5)) +
+  ylab("reaction strength") +
+  guides(
+    colour = guide_legend("Reactivity")
+  ) +
+  geom_line()
+
+
+# Plot the distance-woa-confidence-relationship for different
+# levels of reactivity
+dist_conf_rea_data <- expand.grid(
+  distance = seq(from = 0, to = 4, by = 0.5),
+  conf = seq(from = 0, to = 1, by = 0.1),
+  reactivity = seq(from = 0, to = 1, by = 0.2)
+)
+dist_conf_rea_data <- dist_conf_rea_data %>% rowwise() %>% mutate(woa = getWeightOnAdviceExtended(conf, distance + 1, 1, reactivity))
+
+ggplot(data = dist_conf_rea_data, mapping = aes(x = distance, y = woa, colour = factor(conf))) +
+  scale_x_continuous(name = "Distance |log(SI/FE)|", breaks = seq(0, 4, by = 1)) +
   ylab("Weight on Advice (WOA)") +
   guides(
     colour = guide_legend("Confidence")
   ) +
-  geom_point() +
-  geom_line()
+  geom_line() +
+  facet_wrap(~reactivity)
+
 
 #=============================================#
 # Plots for results of the actual simulations #
@@ -134,8 +137,3 @@ ggplot(rev_acc_data, aes(x = rev_coef, y = acc_change_perc, colour = factor(pk))
   guides(
     colour = guide_legend("Prior Knowledge")
   )
-
-#-----------#
-# EXTENSION #
-#-----------#
-

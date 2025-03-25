@@ -83,55 +83,36 @@ dGroupFirstEstimate <- function(prior_knowledge_vector, true_value) {
 
 # Determine the weight a person puts on advice
 getWeightOnAdvice <- function(confidence, first_estimate, social_information) {
-  # The distance between social information and
-  # first estimate as proportion of the first estimate
-  distance_perc <- abs(social_information - first_estimate) / first_estimate
-  
-  # Orientation points through which the graph of the
-  # distance-WOA-relationship will go, given a base level
-  # of confidence. The higher the confidence, the larger
-  # deviations are required to create the same change
-  # in the confidence.
-  #----------------------------------------------------------
-  # The WOA a person should have when beeing maximally
-  # encouraged (distance == 0) (the y-axis intercept)
-  y1_woa <- (1 - confidence) * 0.5
-  # The level of WOA a person when beeing discouraged
-  # to a certain degree
-  y2_woa <- (1 - confidence) * 1.5
-  # The distance required to reach y2_was, given a certain
-  # level of confidence
-  x2 <- (-5/6) * confidence
-  # conf = 0.2 => 50% deviation
-  # conf = 0.5 => 100% deviation
-  # conf = 0.8 => 150% deviation
-  
-  # Fit graph by determing the scaling factor
-  a <- ((1 - confidence)*1.5 - (1 - confidence)*0.5)/x2
-  
-  weight_on_advice <- a * (distance_perc^(1/2)) + y1_woa
-  weight_on_advice <- max(0, min(1, weight_on_advice))
-  
-  return(weight_on_advice)
-  ## Calculate log-based distance
-  #log_ratio <- log(social_information / first_estimate)
-  #distance <- abs(log_ratio)
-  #
-  ## tanh of large distances approaches 1
-  #weight_of_advice <- (1 - confidence) * (1 + confidence * tanh(distance))
-  #weight_of_advice <- max(0, min(1, weight_of_advice))
-}
-
-#===========#----------------------------------------------------------------------------
-# EXTENSION #
-#===========#
-getWeightOnAdviceExtended <- function(confidence, first_estimate, social_information) {
   # Calculate log-based distance
   log_ratio <- log(social_information / first_estimate)
   distance <- abs(log_ratio)
   
   # tanh of large distances approaches 1
   weight_of_advice <- (1 - confidence) * (1 + confidence * tanh(distance))
+  weight_of_advice <- max(0, min(1, weight_of_advice))
+  
+  return(weight_of_advice)
+}
+
+#===========#----------------------------------------------------------------------------
+# EXTENSION #
+#===========#
+getWeightOnAdviceExtended <- function(confidence, first_estimate, social_information, reactivity) {
+  # Calculate log-based distance
+  log_ratio <- log(social_information / first_estimate)
+  distance <- abs(log_ratio)
+  
+  # tanh of large distances approaches 1
+  weight_of_advice <- (1 - confidence) * (1 + confidence * tanh(distance))
+  
+  # determines how strong a person will react to certain distances
+  # for a given level of reactivity. The more reactivity a person has,
+  # the more will she react to smaller distances
+  reaction_strength <- reactivity * (distance^2) / 4
+  
+  # In reaction to distance, WOA is mitigated
+  weight_of_advice <- weight_of_advice * (1 - reaction_strength)
+  
   weight_of_advice <- max(0, min(1, weight_of_advice))
 
   return(weight_of_advice)
@@ -148,7 +129,11 @@ psi <- function(first_estimate, social_info, confidence, extension = FALSE) {
     #===========#-------------------------------------------------------------------------
     # EXTENSION #
     # ==========#
-    weight_on_advice <- getWeightOnAdviceExtended(confidence, first_estimate, social_info)
+    # We expect that being confidence (because of prior knowledge) predicts
+    # higher reactivity of people, maybe because they are sure to have knowledge
+    # that the group is lacking
+    reactivity <- truncnorm::rtruncnorm(1, a = 0, b = 1, mean = confidence, sd = 0.3)
+    weight_on_advice <- getWeightOnAdviceExtended(confidence, first_estimate, social_info, reactivity)
     #-------------------------------------------------------------------------------------
   }
   # Weight on the inividual first estimate
